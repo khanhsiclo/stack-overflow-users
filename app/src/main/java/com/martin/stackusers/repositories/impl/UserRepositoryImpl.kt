@@ -24,8 +24,8 @@ class UserRepositoryImpl @Inject constructor(
 
     override var users: LiveData<List<User>> = databaseClient.appDatabase.userDao().getAllUsers()
 
-    override fun getUsers(page: Int, callback: RepositoryCallback?) {
-        val call = retrofitClient.getService().getUsers(1)
+    override fun getUsers(page: Int, callback: RepositoryCallback<Boolean>?) {
+        val call = retrofitClient.getService().getUsers(page)
         call.enqueue(object : Callback<UsersResponse> {
             override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
                 callback?.onFailure()
@@ -34,15 +34,19 @@ class UserRepositoryImpl @Inject constructor(
             @SuppressLint("CheckResult")
             override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
                 if (response.isSuccessful && response.body() != null) {
-                    val users = response.body()!!.items
-                    Observable.just(users)
+                    val res = response.body()!!
+                    Observable.just(res)
                         .subscribeOn(Schedulers.io())
                         .map {
-                            databaseClient.appDatabase.userDao().insertUsers(*it.toTypedArray())
+                            if (page == 1) {
+                                databaseClient.appDatabase.userDao().deleteAll()
+                            }
+                            databaseClient.appDatabase.userDao().insertUsers(*it.items.toTypedArray())
+                            return@map res.hasMore
                         }
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe {
-                            callback?.onSuccess()
+                        .subscribe { hasMore ->
+                            callback?.onSuccess(hasMore)
                         }
 
                 } else {

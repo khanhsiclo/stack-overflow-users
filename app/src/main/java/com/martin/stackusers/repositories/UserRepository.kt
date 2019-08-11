@@ -7,5 +7,5 @@ import com.martin.stackusers.models.User
 interface UserRepository {
     var users: LiveData<List<User>>
 
-    fun getUsers(page: Int, callback: RepositoryCallback? = null)
+    fun getUsers(page: Int, callback: RepositoryCallback<Boolean>? = null)
 }

@@ -1,6 +1,6 @@
 package com.martin.stackusers.repositories
 
-interface RepositoryCallback {
-    fun onSuccess()
-    fun onFailure()
+interface RepositoryCallback<T> {
+    fun onSuccess(result: T? = null)
+    fun onFailure(error: String? = null)
 }

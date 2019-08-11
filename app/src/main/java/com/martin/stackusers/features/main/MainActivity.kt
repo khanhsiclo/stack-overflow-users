@@ -1,6 +1,7 @@
 package com.martin.stackusers.features.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupInfinityScrolling(layoutManager: LinearLayoutManager) {
         scrollListener = object : EndlessScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
-                viewModel.loadUsers(true)
+                viewModel.loadUsers(this@MainActivity, true)
             }
         }
 
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSwipeToRefreshView() {
         vRefresh.setOnRefreshListener {
-            viewModel.loadUsers()
+            viewModel.loadUsers(this@MainActivity)
         }
     }
 
@@ -92,10 +93,31 @@ class MainActivity : AppCompatActivity() {
                 viewModel.loadingCompleted.value = null
             }
         })
+
+        viewModel.notification.observe(this, Observer {
+            it?.let { notification ->
+                when (notification) {
+                    MainViewModel.NOTIFICATION_NETWORK_UNAVAILABLE -> {
+                        showToastMessage(R.string.message_network_unavailable)
+                        scrollListener?.resetState()
+                    }
+                    MainViewModel.NOTIFICATION_LOAD_FAILED_UNEXPECTED -> {
+                        showToastMessage(R.string.message_load_user_failed)
+                        scrollListener?.resetState()
+                    }
+                }
+
+                viewModel.notification.value = null
+            }
+        })
+    }
+
+    private fun showToastMessage(message: Int) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onStart() {
         super.onStart()
-        viewModel.loadUsers()
+        viewModel.loadUsers(this)
     }
 }

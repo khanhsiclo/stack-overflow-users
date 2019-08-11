@@ -3,4 +3,6 @@
     <string name="reputation">Reputation</string>
     <string name="users">Users</string>
     <string name="unknown_location">Unknown location</string>
+    <string name="message_network_unavailable">No internet connection</string>
+    <string name="message_load_user_failed">Can\'t get users, please try again.</string>
 </resources>
