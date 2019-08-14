@@ -3,6 +3,7 @@ package com.martin.stackusers.injection.modules
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.martin.stackusers.features.main.MainViewModel
+import com.martin.stackusers.features.userdetails.UserDetailsViewModel
 import com.martin.stackusers.injection.ViewModelFactory
 import com.martin.stackusers.injection.ViewModelKey
 import dagger.Binds
@@ -18,4 +19,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(UserDetailsViewModel::class)
+    abstract fun bindUserDetailsViewModel(viewModel: UserDetailsViewModel): ViewModel
 }

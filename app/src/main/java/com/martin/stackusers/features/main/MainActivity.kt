@@ -1,5 +1,6 @@
 package com.martin.stackusers.features.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,10 @@ import com.martin.stackusers.R
 import com.martin.stackusers.application.MainApplication
 import com.martin.stackusers.customviews.EndlessScrollListener
 import com.martin.stackusers.databinding.ActivityMainBinding
+import com.martin.stackusers.features.userdetails.UserDetailsActivity
 import com.martin.stackusers.injection.ViewModelFactory
 import com.martin.stackusers.models.User
+import com.martin.stackusers.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -60,7 +63,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openUserDetails(user: User) {
-
+        val intent = Intent(this, UserDetailsActivity::class.java)
+        intent.putExtra(Constants.INTENT_USER_ID, user.userId)
+        startActivity(intent)
     }
 
     private fun setupInfinityScrolling(layoutManager: LinearLayoutManager) {

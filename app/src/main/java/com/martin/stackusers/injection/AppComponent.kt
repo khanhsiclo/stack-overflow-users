@@ -1,6 +1,7 @@
 package com.martin.stackusers.injection
 
 import com.martin.stackusers.features.main.MainActivity
+import com.martin.stackusers.features.userdetails.UserDetailsActivity
 import com.martin.stackusers.injection.modules.*
 import dagger.Component
 import javax.inject.Singleton
@@ -10,4 +11,5 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun inject(target: MainActivity)
+    fun inject(target: UserDetailsActivity)
 }

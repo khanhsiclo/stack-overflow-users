@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">Stack Users</string>
-    <string name="reputation">Reputation</string>
+    <string name="reputation">reputation</string>
     <string name="users">Users</string>
     <string name="unknown_location">Unknown location</string>
     <string name="message_network_unavailable">No internet connection</string>
     <string name="message_load_user_failed">Can\'t get users, please try again.</string>
+    <string name="user_details">User details</string>
+    <string name="about_me">About me</string>
+    <string name="ok">OK</string>
+    <string name="badge">Badge:</string>
+    <string name="answers">answers,</string>
+    <string name="questions">questions</string>
 </resources>

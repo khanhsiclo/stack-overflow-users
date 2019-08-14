@@ -10,7 +10,7 @@ class User {
     @PrimaryKey
     @SerializedName("user_id")
     @ColumnInfo(name = "user_id")
-    var userId: Int = 0
+    var userId: Long = 0
 
     @SerializedName("about_me")
     @ColumnInfo(name = "about_me")
@@ -24,17 +24,17 @@ class User {
     @ColumnInfo(name = "reputation")
     var reputation: Int = 0
 
-    @SerializedName("bronze")
-    @ColumnInfo(name = "bronze")
-    var bronze: Int = 0
+    @SerializedName("answer_count")
+    @ColumnInfo(name = "answer_count")
+    var answerCount: Long = 0
 
-    @SerializedName("gold")
-    @ColumnInfo(name = "gold")
-    var gold: Int = 0
+    @SerializedName("question_count")
+    @ColumnInfo(name = "question_count")
+    var creationDate: Long = 0
 
-    @SerializedName("silver")
-    @ColumnInfo(name = "silver")
-    var silver: Int = 0
+    @SerializedName("badge_counts")
+    @ColumnInfo(name = "badge_counts")
+    var badgeCounts: Badge = Badge()
 
     @SerializedName("profile_image")
     @ColumnInfo(name = "profile_image")

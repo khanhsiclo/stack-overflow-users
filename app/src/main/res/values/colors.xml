@@ -12,6 +12,8 @@
 
     <color name="greyDark">#585858</color>
     <color name="yellow">#FFDF00</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="bronze">#CD7F32</color>
     <color name="white">#FFFFFF</color>
     <color name="green">#74AD40</color>
     <color name="red">#d50000</color>

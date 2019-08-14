@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="viewModel" type="com.martin.stackusers.features.userdetails.UserDetailsViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/spacing_normal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvName"
+                app:layout_constraintBottom_toBottomOf="@id/tvReputation"
+                tools:src="@mipmap/ic_launcher"/>
+
+        <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                app:layout_constraintStart_toEndOf="@id/ivAvatar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/text_size_primary"
+                android:textColor="@color/textPrimary"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@{viewModel.displayName}"
+                tools:text="Name"/>
+
+        <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="@dimen/size_user_location_icon"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toTopOf="@id/tvLocation"
+                app:layout_constraintBottom_toBottomOf="@id/tvLocation"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_location"
+                android:tint="@color/colorPrimary"
+                tools:ignore="ContentDescription"/>
+
+        <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_extreme_small"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintStart_toEndOf="@id/ivLocation"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintEnd_toEndOf="@id/tvName"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@{viewModel.location}"
+                tools:text="10 Cong Hoa"/>
+
+        <ImageView
+                android:id="@+id/ivReputation"
+                android:layout_width="@dimen/size_user_location_icon"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toTopOf="@id/tvReputation"
+                app:layout_constraintBottom_toBottomOf="@id/tvReputation"
+                android:adjustViewBounds="true"
+                android:tint="@color/yellow"
+                android:src="@drawable/ic_wreath"
+                tools:ignore="ContentDescription"/>
+
+        <TextView
+                android:id="@+id/tvReputation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_extreme_small"
+                android:layout_marginTop="@dimen/spacing_very_small"
+                app:layout_constraintStart_toEndOf="@id/ivReputation"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@{viewModel.reputation}"
+                tools:text="100000"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_extreme_small"
+                app:layout_constraintStart_toEndOf="@id/tvReputation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvReputation"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@string/reputation"/>
+
+        <TextView
+                android:id="@+id/tvBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvReputation"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@string/badge"/>
+
+        <ImageView
+                android:id="@+id/ivGold"
+                android:layout_width="@dimen/size_user_location_icon"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                app:layout_constraintStart_toEndOf="@id/tvBadge"
+                app:layout_constraintTop_toTopOf="@id/tvBadge"
+                app:layout_constraintBottom_toBottomOf="@id/tvBadge"
+                android:adjustViewBounds="true"
+                android:tint="@color/yellow"
+                android:src="@drawable/ic_prize"
+                tools:ignore="ContentDescription"/>
+
+        <TextView
+                android:id="@+id/tvGold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_very_small"
+                app:layout_constraintStart_toEndOf="@id/ivGold"
+                app:layout_constraintTop_toTopOf="@id/ivGold"
+                app:layout_constraintBottom_toBottomOf="@id/ivGold"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                tools:text="0"
+                android:text="@{viewModel.gold}"/>
+
+        <ImageView
+                android:id="@+id/ivSilver"
+                android:layout_width="@dimen/size_user_location_icon"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                app:layout_constraintStart_toEndOf="@id/tvGold"
+                app:layout_constraintTop_toTopOf="@id/ivGold"
+                android:adjustViewBounds="true"
+                android:tint="@color/silver"
+                android:src="@drawable/ic_prize"
+                tools:ignore="ContentDescription"/>
+
+        <TextView
+                android:id="@+id/tvSilver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_very_small"
+                android:layout_marginTop="@dimen/spacing_normal"
+                app:layout_constraintStart_toEndOf="@id/ivSilver"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvGold"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                tools:text="0"
+                android:text="@{viewModel.silver}"/>
+
+        <ImageView
+                android:id="@+id/ivBronze"
+                android:layout_width="@dimen/size_user_location_icon"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                app:layout_constraintStart_toEndOf="@id/tvSilver"
+                app:layout_constraintTop_toTopOf="@id/ivSilver"
+                android:adjustViewBounds="true"
+                android:tint="@color/bronze"
+                android:src="@drawable/ic_prize"
+                tools:ignore="ContentDescription"/>
+
+        <TextView
+                android:id="@+id/tvBronze"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_very_small"
+                android:layout_marginTop="@dimen/spacing_normal"
+                app:layout_constraintStart_toEndOf="@id/ivBronze"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvGold"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                tools:text="0"
+                android:text="@{viewModel.bronze}"/>
+
+        <TextView
+                android:id="@+id/tvAnswerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBadge"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@{viewModel.reputation}"
+                tools:text="100000"/>
+
+        <TextView
+                android:id="@+id/tvAnswer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_extreme_small"
+                app:layout_constraintStart_toEndOf="@id/tvAnswerLabel"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvAnswerLabel"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@string/answers"/>
+
+        <TextView
+                android:id="@+id/tvQuestionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_very_small"
+                android:layout_marginTop="@dimen/spacing_very_small"
+                app:layout_constraintStart_toEndOf="@id/tvAnswer"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvAnswer"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@{viewModel.reputation}"
+                tools:text="100000"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_extreme_small"
+                app:layout_constraintStart_toEndOf="@id/tvQuestionLabel"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvAnswerLabel"
+                android:textSize="@dimen/text_size_secondary"
+                android:textColor="@color/textSecondary"
+                android:text="@string/questions"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -2,6 +2,7 @@ package com.martin.stackusers.repositories.impl
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.martin.stackusers.database.DatabaseClient
 import com.martin.stackusers.models.User
 import com.martin.stackusers.networking.RetrofitClient
@@ -54,5 +55,19 @@ class UserRepositoryImpl @Inject constructor(
                 }
             }
         })
+    }
+
+    @SuppressLint("CheckResult")
+    override fun getUser(userId: Long, callback: RepositoryCallback<User>) {
+        val result = MutableLiveData<User>()
+        Observable.just(userId)
+            .subscribeOn(Schedulers.io())
+            .map {
+                return@map databaseClient.appDatabase.userDao().getUserById(userId)
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                callback.onSuccess(it)
+            }
     }
 }
