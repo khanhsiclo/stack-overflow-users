@@ -59,7 +59,6 @@ class UserRepositoryImpl @Inject constructor(
 
     @SuppressLint("CheckResult")
     override fun getUser(userId: Long, callback: RepositoryCallback<User>) {
-        val result = MutableLiveData<User>()
         Observable.just(userId)
             .subscribeOn(Schedulers.io())
             .map {

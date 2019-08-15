@@ -196,7 +196,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvBadge"
                 android:textSize="@dimen/text_size_secondary"
                 android:textColor="@color/textSecondary"
-                android:text="@{viewModel.reputation}"
+                android:text="@{viewModel.answers}"
                 tools:text="100000"/>
 
         <TextView
@@ -220,7 +220,7 @@
                 app:layout_constraintBaseline_toBaselineOf="@id/tvAnswer"
                 android:textSize="@dimen/text_size_secondary"
                 android:textColor="@color/textSecondary"
-                android:text="@{viewModel.reputation}"
+                android:text="@{viewModel.questions}"
                 tools:text="100000"/>
 
         <TextView

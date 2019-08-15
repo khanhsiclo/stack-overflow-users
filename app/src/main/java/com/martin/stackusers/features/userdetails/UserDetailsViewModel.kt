@@ -20,9 +20,10 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
     val gold = ObservableField("")
     val silver = ObservableField("")
     val bronze = ObservableField("")
-    val aboutMe = ObservableField("")
     val location = ObservableField("")
     val displayName = ObservableField("")
+    val answers = ObservableField("")
+    val questions = ObservableField("")
 
     fun loadData(userId: Long) {
         userRepository.getUser(userId, object : RepositoryCallback<User> {
@@ -35,7 +36,9 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
                 bindData(result)
             }
 
-            override fun onFailure(error: String?) { }
+            override fun onFailure(error: String?) {
+                notification.value = NOTIFICATION_USER_NOT_FOUND
+            }
         })
     }
 
@@ -45,8 +48,9 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
         gold.set(user.badgeCounts.gold.toString())
         silver.set(user.badgeCounts.silver.toString())
         bronze.set(user.badgeCounts.bronze.toString())
-        aboutMe.set(user.aboutMe)
         location.set(user.location)
         displayName.set(user.displayName)
+        answers.set(user.answerCount.toString())
+        questions.set(user.questionCount.toString())
     }
 }

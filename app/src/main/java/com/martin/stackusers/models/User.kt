@@ -30,7 +30,7 @@ class User {
 
     @SerializedName("question_count")
     @ColumnInfo(name = "question_count")
-    var creationDate: Long = 0
+    var questionCount: Long = 0
 
     @SerializedName("badge_counts")
     @ColumnInfo(name = "badge_counts")
