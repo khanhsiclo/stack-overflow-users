@@ -24,14 +24,6 @@ class User {
     @ColumnInfo(name = "reputation")
     var reputation: Int = 0
 
-    @SerializedName("answer_count")
-    @ColumnInfo(name = "answer_count")
-    var answerCount: Long = 0
-
-    @SerializedName("question_count")
-    @ColumnInfo(name = "question_count")
-    var questionCount: Long = 0
-
     @SerializedName("badge_counts")
     @ColumnInfo(name = "badge_counts")
     var badgeCounts: Badge = Badge()

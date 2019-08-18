@@ -22,8 +22,6 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
     val bronze = ObservableField("")
     val location = ObservableField("")
     val displayName = ObservableField("")
-    val answers = ObservableField("")
-    val questions = ObservableField("")
 
     fun loadData(userId: Long) {
         userRepository.getUser(userId, object : RepositoryCallback<User> {
@@ -50,7 +48,5 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
         bronze.set(user.badgeCounts.bronze.toString())
         location.set(user.location)
         displayName.set(user.displayName)
-        answers.set(user.answerCount.toString())
-        questions.set(user.questionCount.toString())
     }
 }

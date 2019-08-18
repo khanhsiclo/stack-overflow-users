@@ -2,7 +2,6 @@ package com.martin.stackusers.repositories.impl
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.martin.stackusers.database.DatabaseClient
 import com.martin.stackusers.models.User
 import com.martin.stackusers.networking.RetrofitClient
@@ -23,9 +22,9 @@ class UserRepositoryImpl @Inject constructor(
     private val retrofitClient: RetrofitClient,
     private val databaseClient: DatabaseClient) : UserRepository {
 
-    override var users: LiveData<List<User>> = databaseClient.appDatabase.userDao().getAllUsers()
+    override fun getAllUsers(): LiveData<List<User>> = databaseClient.appDatabase.userDao().getAllUsers()
 
-    override fun getUsers(page: Int, callback: RepositoryCallback<Boolean>?) {
+    override fun getUsersByPage(page: Int, callback: RepositoryCallback<Boolean>?) {
         val call = retrofitClient.getService().getUsers(page)
         call.enqueue(object : Callback<UsersResponse> {
             override fun onFailure(call: Call<UsersResponse>, t: Throwable) {

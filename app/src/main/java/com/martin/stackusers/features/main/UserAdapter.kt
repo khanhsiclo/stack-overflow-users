@@ -54,7 +54,7 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     ) {
         this.users.clear()
         this.users.addAll(users)
-        if (hasMore) addLoadingFooter()
+        if (hasMore && users.isNotEmpty()) addLoadingFooter()
 
         notifyDataSetChanged()
     }

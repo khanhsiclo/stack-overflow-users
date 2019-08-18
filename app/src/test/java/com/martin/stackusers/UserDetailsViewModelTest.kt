@@ -45,8 +45,6 @@ class UserDetailsViewModelTest {
             }
             location = "Ho Chi Minh City"
             displayName = "Martin"
-            answerCount = 5
-            questionCount = 6
         }
 
         doAnswer { invocation ->
@@ -59,15 +57,13 @@ class UserDetailsViewModelTest {
         userDetailsViewModel.loadData(user.userId)
 
         verify(userRepository, times(1)).getUser(com.nhaarman.mockitokotlin2.any(), com.nhaarman.mockitokotlin2.any())
-        assertEquals(userDetailsViewModel.profileImage.value, user.profileImage)
-        assertEquals(userDetailsViewModel.reputation.get(), user.reputation.toString())
-        assertEquals(userDetailsViewModel.gold.get(), user.badgeCounts.gold.toString())
-        assertEquals(userDetailsViewModel.silver.get(), user.badgeCounts.silver.toString())
-        assertEquals(userDetailsViewModel.bronze.get(), user.badgeCounts.bronze.toString())
-        assertEquals(userDetailsViewModel.location.get(), user.location)
-        assertEquals(userDetailsViewModel.displayName.get(), user.displayName)
-        assertEquals(userDetailsViewModel.answers.get(), user.answerCount.toString())
-        assertEquals(userDetailsViewModel.questions.get(), user.questionCount.toString())
+        assertEquals(user.profileImage, userDetailsViewModel.profileImage.value)
+        assertEquals(user.reputation.toString(), userDetailsViewModel.reputation.get())
+        assertEquals(user.badgeCounts.gold.toString(), userDetailsViewModel.gold.get())
+        assertEquals(user.badgeCounts.silver.toString(), userDetailsViewModel.silver.get())
+        assertEquals(user.badgeCounts.bronze.toString(), userDetailsViewModel.bronze.get())
+        assertEquals(user.location, userDetailsViewModel.location.get())
+        assertEquals(user.displayName, userDetailsViewModel.displayName.get())
     }
 
     @Test
@@ -83,7 +79,7 @@ class UserDetailsViewModelTest {
         userDetailsViewModel.loadData(userId)
 
         verify(userRepository, times(1)).getUser(com.nhaarman.mockitokotlin2.any(), com.nhaarman.mockitokotlin2.any())
-        assertEquals(userDetailsViewModel.notification.value, UserDetailsViewModel.NOTIFICATION_USER_NOT_FOUND)
+        assertEquals(UserDetailsViewModel.NOTIFICATION_USER_NOT_FOUND, userDetailsViewModel.notification.value)
     }
 
     @Test
@@ -99,6 +95,6 @@ class UserDetailsViewModelTest {
         userDetailsViewModel.loadData(userId)
 
         verify(userRepository, times(1)).getUser(com.nhaarman.mockitokotlin2.any(), com.nhaarman.mockitokotlin2.any())
-        assertEquals(userDetailsViewModel.notification.value, UserDetailsViewModel.NOTIFICATION_USER_NOT_FOUND)
+        assertEquals(UserDetailsViewModel.NOTIFICATION_USER_NOT_FOUND, userDetailsViewModel.notification.value)
     }
 }

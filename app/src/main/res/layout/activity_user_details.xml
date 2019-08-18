@@ -186,51 +186,5 @@
                 android:textColor="@color/textSecondary"
                 tools:text="0"
                 android:text="@{viewModel.bronze}"/>
-
-        <TextView
-                android:id="@+id/tvAnswerLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvBadge"
-                android:textSize="@dimen/text_size_secondary"
-                android:textColor="@color/textSecondary"
-                android:text="@{viewModel.answers}"
-                tools:text="100000"/>
-
-        <TextView
-                android:id="@+id/tvAnswer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_extreme_small"
-                app:layout_constraintStart_toEndOf="@id/tvAnswerLabel"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvAnswerLabel"
-                android:textSize="@dimen/text_size_secondary"
-                android:textColor="@color/textSecondary"
-                android:text="@string/answers"/>
-
-        <TextView
-                android:id="@+id/tvQuestionLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_very_small"
-                android:layout_marginTop="@dimen/spacing_very_small"
-                app:layout_constraintStart_toEndOf="@id/tvAnswer"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvAnswer"
-                android:textSize="@dimen/text_size_secondary"
-                android:textColor="@color/textSecondary"
-                android:text="@{viewModel.questions}"
-                tools:text="100000"/>
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_extreme_small"
-                app:layout_constraintStart_toEndOf="@id/tvQuestionLabel"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvAnswerLabel"
-                android:textSize="@dimen/text_size_secondary"
-                android:textColor="@color/textSecondary"
-                android:text="@string/questions"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

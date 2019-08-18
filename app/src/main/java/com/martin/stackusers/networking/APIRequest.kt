@@ -12,6 +12,6 @@ interface APIRequest {
 
     @GET("users")
     fun getUsers(@Query("page") page: Int,
-                 @Query("pagesize") pageSize: Int = 30,
+                 @Query("pagesize") pageSize: Int = 20,
                  @Query("site") site: String = "stackoverflow"): Call<UsersResponse>
 }
