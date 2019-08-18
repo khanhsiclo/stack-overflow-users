@@ -64,8 +64,10 @@ class UserRepositoryImpl @Inject constructor(
                 return@map databaseClient.appDatabase.userDao().getUserById(userId)
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
+            .subscribe ({
                 callback.onSuccess(it)
-            }
+            }, {
+                callback.onFailure()
+            })
     }
 }
